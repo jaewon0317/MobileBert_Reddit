@@ -74,7 +74,7 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 | 1gvv0sr   | 0              | Chinese o1 competitor (DeepSeek-R1-Lite-Preview) thinks for over 6 minutes! (Even GPT4o and Claude 3.5 Sonnet couldn't solve this) | 2024-11-21 02:32:18 |
 | 1gvv0sr   | 2              | o1 mini only thought for 26 seconds. banged out the correct answer                                                                 | 2024-11-21 03:43:59 |
 
-<img src="data/image1.png" width="70%">
+<img src="data/image1.png" width="100%">
 
 ---
 ## 3. 데이터 검증 및 전처리
@@ -98,7 +98,7 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 * single : ('chatgpt', 'claude', 'grok', 'gemini') 중 한개만 언급된 데이터
 * multi : ('chatgpt', 'claude', 'grok', 'gemini') 중 2개 이상 언급된 데이터
 
-<img src="data/image2.png" width="70%">
+<img src="data/image2.png" width="100%">
 
 ---
 ## 4. 데이터 라벨링
@@ -155,7 +155,7 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 
 ### 4-4 모델별 라벨링 긍정 중립 부정 비율 시각화
 
-<img src="data/image3.png" width="70%"> 
+<img src="data/image3.png" width="100%"> 
 
 ---
 ## 5. 모델 
@@ -281,19 +281,17 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 
  ### 5-4. 학습된 모델(멀티 태스크)로 전체 라벨링한 데이터의 분포 
 
-<img src="data/image4.png" width="40%"> 
-<img src="data/image5.png" width="40%">
+<img src="data/image4.png" width="40%"> <img src="data/image5.png" width="40%">
 
 ## 6. 분석 및 시각화
 
 ### 6-1 시장 점유율 데이터 (grok은 추가적으로 찾아야함)
-<img src="data/market1.png" width="40%">
-<img src="data/market2.png" width="40%">
+<img src="data/market1.png" width="40%"> <img src="data/market2.png" width="40%">
 
 * monthly sentiment analysis result changes 그래프를 보면 시장 점유율 데이터와 어느정도 관련 있는걸 알 수 있다.
 
 ### 6-2 벤치마크 데이터 (MMLU)
-<img src="data/bench1.png" width="40%">
+<img src="data/bench1.png" width="100%">
 
 ---
 
