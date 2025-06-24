@@ -1,0 +1,8 @@
+Timestamp,category,multi_head,pred_vector
+2024-11-05,"chatgpt,gemini","['chatgpt', 'gemini']","[1, -1]"
+2024-11-10,claude,['claude'],[1]
+2024-12-15,chatgpt,['chatgpt'],[0]
+2024-12-20,"grok,gemini","['grok', 'gemini']","[-1, 1]"
+2025-01-10,gemini,['gemini'],[1]
+2025-01-22,"claude,grok","['claude', 'grok']","[0, 0]"
+2025-02-15,chatgpt,['chatgpt'],[-1]
