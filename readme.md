@@ -281,12 +281,20 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 
  ### 5-4. 학습된 모델(멀티 태스크)로 전체 라벨링한 데이터의 분포 
 
-<img src="data/image4.png" width="50%"> <img src="data/image5.png" width="50%">
+<div style="display: flex;">
+  <img src="data/image4.png" width="50%"> 
+  <img src="data/image5.png" width="50%">
+</div>
+
 
 ## 6. 분석 및 시각화
 
 ### 6-1 시장 점유율 데이터 (grok은 추가적으로 찾아야함)
-<img src="data/market1.png" width="50%"> <img src="data/market2.png" width="50%">
+<div style="display: flex;">
+  <img src="data/market1.png" width="50%">
+  <img src="data/market2.png" width="50%">
+</div>
+
 
 * monthly sentiment analysis result changes 그래프를 보면 시장 점유율 데이터와 어느정도 관련 있는걸 알 수 있다.
 
