@@ -1,6 +1,6 @@
 ![MobileBERT Header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=MobileBERT를%20활용한%20SNS%20LLM%20여론%20분석&desc=SNS%20여론,%20벤치마크%20성능,%20시장%20점유율%20간의%20상관관계%20연구&fontSize=45&fontColor=FFFFFF&descSize=20&fontAlignY=45&descAlignY=65&animation=fadeIn)
 ## 1.프로젝트 개요
-    ** 연구 목표:급변하는 대규모 언어 모델(LLM) 시장에서 세 가지 핵심 요소 간의 동적 상관관계를 규명한다 또한,주요 이벤트와 요소간의 관계도 분석한다. **
+     연구 목표:급변하는 대규모 언어 모델(LLM) 시장에서 세 가지 핵심 요소(성능,점유율,여론) 간의 상관관계를 규명한다 또한,주요 이벤트와 요소간의 관계도 분석한다.
 
 - **소셜 미디어 상의 대중적 여론**
 - **객관적인 벤치마크 성능**  
@@ -23,15 +23,13 @@ AI 모델의 벤치마크 성능 지표가 사용자들의 인식 및 SNS 상의
 
 ### 기술적 접근법
 
-**타겟 기반 감성 분석(Target-Based Sentiment Analysis)** 과업을 해결하기 위해 다음과 같은 아키텍처를 제안합니다:
+**타겟 기반 감성 분석(Target-Based Sentiment Analysis)** 아키텍처:
 
 - **멀티태스크 및 멀티레이블 분류** 아키텍처를 적용한 MobileBERT 모델
 - 시계열 감성 데이터와 외부 시장/성능 데이터의 결합 분석
 - LLM 시장의 성공 요인에 대한 다각적 분석 및 실증적 인사이트 제공
 
 ---
-
-*본 프로젝트는 AI 모델 시장의 복잡한 생태계를 이해하고, 데이터 기반의 전략적 인사이트를 도출하는 것을 목표로 한다.*
 
 ## 2.데이터 수집
 ### 2-1. 데이터 출처 및 선정 이유 
@@ -46,14 +44,14 @@ AI 모델의 벤치마크 성능 지표가 사용자들의 인식 및 SNS 상의
 ### 2-2. 데이터 수집 대상 및 결과
   * 내용 : 상용 LLM 의 대표 모델(chatgpt, claude, grok, gemini)이 언급된 게시물의 제목,본문,댓글을 수집 대상으로 설정하였다.
   * 기간 : 2024년 11월 1일부터 2025년 6월 18일까지 약 8개월 동안 생성된 게시물로 한정하였다.
-  * 결과 : 전체: 132,999개 개의 데이터를 확보했고, csv 형태로 저장된다.
+  * 결과 : 전체: 132,999개 개의 데이터를 확보했다.
 
 ### 2-3. 데이터 수집 방법
    * 수집 도구: reddit 공식 크롤링 api
      * 작동 방식 및 한계점: reddit 공식 api는 해당 키워드의 관련성 또는 최신순으로 조회한후 조회된 데이터에서 날짜를 기준으로 필터링한 데이터를 가져온다. 따라서 조회 데이터를 크게 늘려서 수집해도 예전 데이터 수는 적고 최근 데이터 수가 많이 수집된다. 
-     * 주의 사항: 레딧 API는 단시간 내 대량의 데이터를 요청할경우 매우 높은 확률로 API 접근을 제한 당한다. 안정적인 데이터 확보를 위해서 점진적이고 주기적으로 수집하였으나, 신중한 접근에도 불구하고 4차례의 API 접근 제한을 당해 API 재발급을 받았다.
+     * 주의 사항: 레딧 API는 단시간 내 대량의 데이터를 요청할경우 API 접근을 제한 당한다. 안정적인 데이터 확보를 위해서 주기적으로 수집하였다.
    * 수집 방법
-     * 수집 세분화: 각 모델(chatgpt, claude, grok, gemini)별로 월(8개월)별로 총 32(4개 모델 x 8개월)번 이상 수집하였다.
+     * 수집 세분화: 각 모델(chatgpt, claude, grok, gemini)별로 월(8개월)별로 총 32번 수집하였다.
      * 수집 절차: 한 번의 요청 당 게시글을 약 150개씩 조회 하였고,날짜에 맞게 최대 25개씩 수집 했으며, 해당 게시물에 달린 댓글은 모두 수집하는 방식을 사용하였다.
 
 ```
@@ -61,7 +59,7 @@ AI 모델의 벤치마크 성능 지표가 사용자들의 인식 및 SNS 상의
 SEARCH_QUERY = 'chatgpt'  #검색할 키워드
 SUBREDDIT_TO_SEARCH = 'all' #서브레딧
 LIMIT_POSTS = 25  #최대로 가져올 게시글 수
-CSV_FILENAME = '../raw_data/new_data/2025_6_chatgpt.csv' # 파일 명 
+CSV_FILENAME = '../raw_data/new_data/2025_6_chatgpt.csv' # 파일 명 ,csv 포맷
 CSV_HEADER = ['Post_ID', 'Type', 'Data', 'Timestamp']
 START_DATE = datetime.datetime(2025, 6, 1, 0, 0, 0, tzinfo=datetime.timezone.utc).timestamp() # 날짜 범위 설정 (UTC 기준)
 END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.utc).timestamp() 
@@ -79,7 +77,7 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 ---
 ## 3. 데이터 검증 및 전처리
 ### 3-1. 데이터 검증
-* 게시물의 제목을 전부 읽어서 ai와 관련 없는 데이터를 데이터 프레임에서 제외시켰다.
+* 게시물의 제목을 전부 읽어서 ai와 관련 없는 데이터를 제외시켰다.
 * 제목만 보고 ai 관련 게시글인지 알 수 없는 경우에는 직접 게시글을 reddit 에서 확인 하였다.
 * 예시: gemini - 별자리 ,claude - 사람 이름 등
 
@@ -145,13 +143,11 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 
 ### 4-3 라벨링 한계점 및 개선방향
 * 한계점 
-  * 초기에 라벨링을 하며 규칙을 만들었으므로 초기에 라벨링 한 데이터는 신뢰도가 떨어질 수 있다.
   * 멀티라벨과 단일라벨의 수가 900:400 으로 균형이 맞지 않는다.
   * 라벨링 갯수가 1300개로 부족하다.
   * 혼자서 라벨링 했기 때문에 주관적이다
 * 개선방향
   * 단일라벨의 갯수를 900개 까지 만들면 데이터 불균형과 라벨링 갯수 부족을 어느정도 해결 할 수 있다.
-  * 초기에 라벨링한 데이터를 다시 보고 기준에 맞게 재 라벨링 한다.
 
 ### 4-4 모델별 라벨링 긍정 중립 부정 비율 시각화
 
@@ -175,12 +171,12 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 데이터: i hate chatgpt so much for coding.it's extremly bad compared to claude.
 출력: 4차원 벡터
 
-        [-1, 0, 2, 0]
+        [-1, 1, 0, 0]
          │  │  │  │
          │  │  │  └─ Gemini: 0 (중립/언급없음)
          │  │  └──── Grok: 0 (중립/언급없음)
-         │  └─────── Claude: 1 (중립/언급없음)
-         └────────── ChatGPT: -1 (긍정)
+         │  └─────── Claude: 1 (긍정)
+         └────────── ChatGPT: -1 (부정)
 ```
 
 
