@@ -293,7 +293,6 @@ END_DATE = datetime.datetime(2025, 6, 18, 23, 59, 59, tzinfo=datetime.timezone.u
 </div>
 
 
-* monthly sentiment analysis result changes 그래프를 보면 시장 점유율 데이터와 어느정도 관련 있는걸 알 수 있다.
 
 ### 6-2 벤치마크 데이터 (MMLU)
 <img src="data/bench1.png" width="60%">
